@@ -1,5 +1,7 @@
 
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import Calendar from "./pages/Calendar";
 import "./App.css";
 
 const categories = [
@@ -12,7 +14,13 @@ const categories = [
 ];
 
 function App() {
+  const location = useLocation();
+
   const [search, setSearch] = useState("");
+
+  if (location.pathname === "/calendar") {
+    return <Calendar />;
+  }
 
   function explore() {
     if (!search.trim()) {
@@ -27,7 +35,7 @@ function App() {
     <main>
       <nav className="navbar">
         <h1>TIME<span>VERSE</span></h1>
-        <a href="#calendar">Calendar Explorer ↗</a>
+        <a href="/calendar">Calendar Explorer ↗</a>
       </nav>
 
       <section className="hero">
@@ -84,7 +92,9 @@ function App() {
           from any date in history.
         </p>
 
-        <button onClick={() => alert("Calendar Explorer coming next!")}>
+       <button onClick={() => {
+  window.location.href = "/calendar";
+}}>
           Open Calendar Explorer →
         </button>
       </section>

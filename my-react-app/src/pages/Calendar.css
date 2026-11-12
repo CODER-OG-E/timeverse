@@ -1,0 +1,407 @@
+/* ==================================
+   TIMEVERSE CALENDAR EXPLORER
+   Version 1.0
+================================== */
+
+.calendar-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 10%, #172b55 0%, transparent 40%),
+    #080b16;
+  color: #f5f7ff;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+/* NAVIGATION */
+
+.calendar-nav {
+  height: 85px;
+  padding: 0 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #20283b;
+}
+
+.calendar-logo {
+  font-size: 27px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  color: white;
+  text-decoration: none;
+}
+
+.calendar-logo span {
+  color: #528cff;
+}
+
+.calendar-nav-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  color: #aab8d0;
+  font-size: 14px;
+}
+
+.calendar-nav-links a {
+  color: #aab8d0;
+  text-decoration: none;
+}
+
+.calendar-nav-links a:hover {
+  color: white;
+}
+
+.active-link {
+  color: #75a1ff;
+}
+
+/* HERO */
+
+.time-hero {
+  text-align: center;
+  padding: 100px 20px 65px;
+}
+
+.time-badge {
+  display: inline-block;
+  color: #80aaff;
+  border: 1px solid #304875;
+  background: #142344;
+  border-radius: 30px;
+  padding: 11px 19px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+}
+
+.time-hero h1 {
+  font-size: clamp(42px, 6vw, 72px);
+  line-height: 1.15;
+  letter-spacing: -2px;
+}
+
+.time-hero h1 span {
+  color: #6595ff;
+}
+
+.time-hero p {
+  color: #9ba8bd;
+  margin-top: 25px;
+  line-height: 1.7;
+}
+
+/* TIME MACHINE */
+
+.time-machine {
+  max-width: 850px;
+  margin: 20px auto 90px;
+  padding: 45px;
+  background: linear-gradient(145deg, #131f38, #0e1628);
+  border: 1px solid #2b4169;
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.2);
+}
+
+.machine-heading > span,
+.timeline-heading > span {
+  color: #80aaff;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.machine-heading h2 {
+  font-size: 27px;
+  margin-top: 17px;
+}
+
+.machine-heading p {
+  color: #91a0ba;
+  margin-top: 12px;
+}
+
+/* DATE SELECTORS */
+
+.date-selectors {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  gap: 15px;
+  margin: 40px 0 30px;
+}
+
+.date-field {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 10px;
+}
+
+.date-field label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #80aaff;
+}
+
+.date-field select {
+  width: 100%;
+  padding: 17px 12px;
+  border-radius: 10px;
+  border: 1px solid #354b72;
+  background: #0b1426;
+  color: white;
+  font-size: 16px;
+  outline: none;
+  cursor: pointer;
+}
+
+.date-field select:focus {
+  border-color: #6595ff;
+}
+
+/* TRAVEL BUTTON */
+
+.travel-button {
+  width: 100%;
+  padding: 18px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #3978f6, #6559e8);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.travel-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px #3978f655;
+}
+
+.machine-note {
+  color: #71809a;
+  font-size: 11px;
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+/* TIMELINE RESULTS */
+
+.timeline-section {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px 25px 100px;
+}
+
+.timeline-heading {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.timeline-heading h2 {
+  font-size: 38px;
+  margin-top: 15px;
+}
+
+.timeline-heading p {
+  color: #91a0ba;
+  margin-top: 12px;
+}
+
+/* FILTERS */
+
+.category-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 35px;
+}
+
+.category-filters button {
+  padding: 10px 16px;
+  border: 1px solid #2d3d5a;
+  border-radius: 25px;
+  background: #111a2c;
+  color: #aab8d0;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.category-filters button:hover,
+.category-filters button.filter-active {
+  background: #2856a9;
+  border-color: #6595ff;
+  color: white;
+}
+
+/* EVENT CARDS */
+
+.timeline-list {
+  border-left: 2px solid #355b9d;
+  margin-left: 20px;
+  padding-left: 30px;
+}
+
+.event-card {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 25px;
+  background: #111a2c;
+  border: 1px solid #293b5a;
+  border-radius: 15px;
+  margin-bottom: 25px;
+}
+
+.event-card::before {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #6595ff;
+  border-radius: 50%;
+  left: -38px;
+  top: 32px;
+  box-shadow: 0 0 15px #6595ff;
+}
+
+.event-icon {
+  font-size: 36px;
+}
+
+.event-content {
+  flex: 1;
+}
+
+.event-category {
+  color: #80aaff;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.event-content h3 {
+  font-size: 21px;
+  margin: 10px 0;
+}
+
+.event-content p {
+  color: #9ba8bd;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.event-source {
+  display: inline-block;
+  color: #71809a;
+  font-size: 11px;
+  margin-top: 15px;
+}
+
+.event-year {
+  color: #80aaff;
+  font-size: 13px;
+}
+
+/* EMPTY RESULTS */
+
+.empty-results {
+  text-align: center;
+  background: #111a2c;
+  border: 1px solid #293b5a;
+  padding: 50px 25px;
+  border-radius: 15px;
+}
+
+.empty-results span {
+  font-size: 45px;
+}
+
+.empty-results h3 {
+  margin: 20px 0 10px;
+}
+
+.empty-results p {
+  color: #9ba8bd;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.data-disclaimer {
+  text-align: center;
+  color: #71809a;
+  font-size: 11px;
+  margin-top: 25px;
+}
+
+/* FOOTER */
+
+.calendar-footer {
+  border-top: 1px solid #20283b;
+  padding: 30px;
+  text-align: center;
+  color: #71809a;
+  font-size: 13px;
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+  .calendar-nav {
+    padding: 0 20px;
+  }
+
+  .calendar-logo {
+    font-size: 20px;
+  }
+
+  .calendar-nav-links {
+    gap: 12px;
+    font-size: 11px;
+  }
+
+  .time-hero {
+    padding-top: 75px;
+  }
+
+  .time-machine {
+    margin: 10px 15px 65px;
+    padding: 25px 18px;
+  }
+
+  .machine-heading h2 {
+    font-size: 22px;
+  }
+
+  .date-selectors {
+    gap: 8px;
+  }
+
+  .date-field select {
+    padding: 14px 5px;
+    font-size: 13px;
+  }
+
+  .timeline-heading h2 {
+    font-size: 29px;
+  }
+
+  .event-card {
+    padding: 18px;
+    gap: 12px;
+  }
+
+  .event-content h3 {
+    font-size: 17px;
+  }
+
+  .event-year {
+    display: none;
+  }
+}
