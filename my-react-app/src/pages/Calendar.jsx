@@ -1,4 +1,6 @@
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import "./Calendar.css";
 
 const months = [
@@ -13,23 +15,12 @@ const categories = [
   "Science & Space",
   "Technology",
   "Gaming",
+  "Sports",
   "Automobiles",
-  "Entertainment"
-];
-
-// Our first curated historical event.
-// We will connect a larger historical dataset later.
-const historicalEvents = [
-  {
-    date: "1969-07-20",
-    title: "Apollo 11 lands on the Moon",
-    category: "Science & Space",
-    year: "1969",
-    description:
-      "Neil Armstrong and Buzz Aldrin became the first humans to walk on the Moon during NASA's Apollo 11 mission.",
-    icon: "🌕",
-    source: "NASA"
-  }
+  "Entertainment",
+  "Inventions & Discoveries",
+  "Births",
+  "Deaths"
 ];
 
 function getDaysInMonth(month, year) {
@@ -45,8 +36,26 @@ function Calendar() {
   const [day, setDay] = useState(20);
   const [month, setMonth] = useState(7);
   const [year, setYear] = useState(1969);
-  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+const requestedCategory = searchParams.get("category") || "All";
+
+const [selectedCategory, setSelectedCategory] =
+  useState(requestedCategory);
+
+useEffect(() => {
+  const validCategory = categories.includes(requestedCategory)
+    ? requestedCategory
+    : "All";
+
+  setSelectedCategory(validCategory);
+}, [requestedCategory]);
   const [searched, setSearched] = useState(false);
+
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const daysInMonth = getDaysInMonth(month, year);
 
@@ -58,19 +67,57 @@ function Calendar() {
 
   const selectedDate = `${day} ${months[month - 1]} ${year}`;
 
-  const matchingEvents = historicalEvents.filter((event) => {
-    const matchesDate = event.date === dateKey;
-
-    const matchesCategory =
-      selectedCategory === "All" ||
-      event.category === selectedCategory;
-
-    return matchesDate && matchesCategory;
-  });
-
-  function travelThroughTime() {
-    setSearched(true);
+ const matchingEvents = events.filter((event) => {
+  if (selectedCategory === "All") {
+    return true;
   }
+
+  if (selectedCategory === "Births") {
+    return event.type === "births";
+  }
+
+  if (selectedCategory === "Deaths") {
+    return event.type === "deaths";
+  }
+
+  return event.category === selectedCategory;
+});
+
+ 
+
+async function travelThroughTime() {
+  setSearched(true);
+  setLoading(true);
+  setError("");
+  setEvents([]);
+
+  try {
+    const response = await fetch("http://localhost:3001/api/events", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        date: dateKey
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error("The history service could not retrieve events.");
+    }
+
+    const data = await response.json();
+    setEvents(data.events || []);
+
+  } catch (err) {
+    console.error("TIMEVERSE error:", err);
+    setError(
+      "We couldn't retrieve historical events. Please check that the backend is running and try again."
+    );
+  } finally {
+    setLoading(false);
+  }
+}
 
   function handleMonthChange(value) {
     setMonth(value);
@@ -131,7 +178,6 @@ function Calendar() {
       {/* DATE SELECTOR */}
 
       <section className="time-machine">
-
         <div className="machine-heading">
           <span>01 / SELECT YOUR DESTINATION</span>
           <h2>Where in time do you want to go?</h2>
@@ -194,15 +240,15 @@ function Calendar() {
         <button
           className="travel-button"
           onClick={travelThroughTime}
+          disabled={loading}
         >
-          ✦ TRAVEL THROUGH TIME →
+          {loading ? "✦ EXPLORING HISTORY..." : "✦ TRAVEL THROUGH TIME →"}
         </button>
 
         <p className="machine-note">
           Currently exploring recorded calendar history.
           Deep Time exploration will be a separate experience.
         </p>
-
       </section>
 
       {/* RESULTS */}
@@ -213,63 +259,97 @@ function Calendar() {
           <div className="timeline-heading">
             <span>02 / YOUR DESTINATION</span>
             <h2>{selectedDate}</h2>
-            <p>Here's what TIMEVERSE currently knows about this date.</p>
+            <p>Here's what TIMEVERSE discovered on this date.</p>
           </div>
 
-          <div className="category-filters">
-            {categories.map((category) => (
-              <button
-                key={category}
-                className={
-                  selectedCategory === category ? "filter-active" : ""
-                }
-                onClick={() => setSelectedCategory(category)}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-
-          {matchingEvents.length > 0 ? (
-            <div className="timeline-list">
-
-              {matchingEvents.map((event) => (
-                <article className="event-card" key={event.date}>
-                  <div className="event-icon">{event.icon}</div>
-
-                  <div className="event-content">
-                    <span className="event-category">
-                      {event.category}
-                    </span>
-
-                    <h3>{event.title}</h3>
-
-                    <p>{event.description}</p>
-
-                    <span className="event-source">
-                      Source: {event.source}
-                    </span>
-                  </div>
-
-                  <span className="event-year">{event.year}</span>
-                </article>
-              ))}
-
+          {loading && (
+            <div className="empty-results">
+              <h3>Travelling through time...</h3>
+              <p>Searching historical records. This may take a moment.</p>
             </div>
-          ) : (
+          )}
+
+          {error && (
+            <div className="empty-results">
+              <h3>Something went wrong</h3>
+              <p>{error}</p>
+            </div>
+          )}
+
+          {!loading && !error && events.length > 0 && (
+            <>
+              <div className="category-filters">
+  {categories.map((category) => (
+    <button
+      key={category}
+      className={
+        selectedCategory === category ? "filter-active" : ""
+      }
+      onClick={() => {
+        setSelectedCategory(category);
+        setSearchParams({ category });
+      }}
+    >
+      {category}
+    </button>
+  ))}
+</div>
+
+              <p>
+                Found <strong>{matchingEvents.length}</strong> historical
+                events.
+              </p>
+
+              <div className="timeline-list">
+                {matchingEvents.map((event, index) => (
+                  <article
+                    className="event-card"
+                    key={`${event.year}-${index}`}
+                  >
+                    <div className="event-icon">🌍</div>
+
+                    <div className="event-content">
+                      <span className="event-category">
+                        {event.category}
+                      </span>
+
+                      <h3>{event.title}</h3>
+
+                      <p>{event.description}</p>
+
+                      {event.source && (
+                        <a
+                          className="event-source"
+                          href={event.source}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          Read source ↗
+                        </a>
+                      )}
+                    </div>
+
+                    <span className="event-year">{event.year}</span>
+                  </article>
+                ))}
+              </div>
+            </>
+          )}
+
+          {!loading && !error && events.length === 0 && (
             <div className="empty-results">
               <span>🔭</span>
-              <h3>No curated events found yet.</h3>
+              <h3>No historical events found.</h3>
               <p>
-                Our historical collection is still growing.
-                Try 20 July 1969 to explore our first historical event.
+                We couldn't find events for this date in our current
+                historical source. Try another date.
               </p>
             </div>
           )}
 
           <p className="data-disclaimer">
-            This is an early demonstration dataset, not a complete
-            historical record.
+            Historical information is provided by Wikimedia.
+            This collection may be incomplete.
           </p>
 
         </section>

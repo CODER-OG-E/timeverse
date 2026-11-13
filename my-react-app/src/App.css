@@ -8,7 +8,7 @@
 body {
   background: #080b16;
   color: white;
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .navbar {
@@ -183,4 +183,384 @@ footer {
   .navbar {
     padding: 20px;
   }
+}
+
+
+/* =================================
+   TIMEVERSE AI — HYBRID DESIGN
+================================= */
+
+.ai-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 0%, #17264a 0%, transparent 50%),
+    #080b16;
+  color: #ffffff;
+  padding-bottom: 80px;
+}
+
+.ai-page .navbar {
+  background: rgba(8, 11, 22, 0.8);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.ai-page .navbar button {
+  background: transparent;
+  border: 1px solid #293650;
+  color: #b7c5dc;
+}
+
+.ai-page .navbar button:hover {
+  border-color: #528cff;
+  color: white;
+}
+
+.ai-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 100px 25px 50px;
+  text-align: center;
+}
+
+.ai-container h2 {
+  font-size: clamp(38px, 6vw, 64px);
+  margin-bottom: 20px;
+  letter-spacing: -2px;
+}
+
+.ai-container h2 span {
+  background: linear-gradient(90deg, #528cff, #a78bfa);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.ai-container > p:not(.tagline) {
+  color: #9ba8bd;
+  line-height: 1.8;
+  margin-bottom: 35px;
+}
+
+.ai-container textarea {
+  width: 100%;
+  min-height: 150px;
+  resize: vertical;
+  padding: 22px;
+  border-radius: 16px;
+  border: 1px solid #293b60;
+  background: #111a2c;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.ai-container textarea::placeholder {
+  color: #71809a;
+}
+
+.ai-container textarea:focus {
+  border-color: #528cff;
+  box-shadow: 0 0 25px rgba(82, 140, 255, 0.12);
+}
+
+.ai-container > button {
+  margin-top: 20px;
+  padding: 16px 30px;
+  background: linear-gradient(100deg, #3978f6, #7655e8);
+  border-radius: 12px;
+  font-size: 15px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.ai-container > button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(82, 140, 255, 0.25);
+}
+
+.ai-container > button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+  transform: none;
+}
+
+.ai-answer {
+  margin-top: 55px;
+  padding: 30px;
+  background: linear-gradient(145deg, #121d32, #101728);
+  border: 1px solid #293b60;
+  border-radius: 18px;
+  text-align: left;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+}
+
+.ai-answer h3 {
+  color: #75a5ff;
+  font-size: 18px;
+  margin-bottom: 22px;
+}
+
+.ai-answer p {
+  color: #d4deef;
+  font-size: 15px;
+  line-height: 1.9;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* Mobile layout */
+
+@media (max-width: 600px) {
+  .ai-container {
+    padding: 65px 18px 30px;
+  }
+
+  .ai-container h2 {
+    letter-spacing: -1px;
+  }
+
+  .ai-answer {
+    padding: 22px;
+  }
+
+  .ai-page .navbar {
+    padding: 18px;
+  }
+}
+
+
+/* TIMEVERSE AI — Suggested Questions */
+
+.ai-suggestions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  max-width: 850px;
+  margin: 35px auto 22px;
+}
+
+.ai-suggestions button {
+  background: linear-gradient(145deg, #141f36, #101729);
+  border: 1px solid #293b60;
+  color: #c5d5f0;
+  padding: 20px 12px;
+  border-radius: 13px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.25s ease;
+}
+
+.ai-suggestions button:hover {
+  background: #1b2b4b;
+  border-color: #6199ff;
+  color: white;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(50, 110, 255, 0.12);
+}
+
+@media (max-width: 700px) {
+  .
+/* AI suggestion bubbles */
+
+.ai-suggestions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  max-width: 850px;
+  margin: 35px auto 25px;
+}
+
+.ai-suggestions button {
+  min-height: 175px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 12px;
+
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+
+  color: white;
+  transition: 0.25s ease;
+}
+
+.ai-suggestions button:hover {
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(-4px);
+  border-color: rgba(160, 180, 255, 0.4);
+}
+
+.suggestion-label {
+  color: #b8b9d8;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.ai-suggestions button strong {
+  font-size: 17px;
+}
+
+.ai-suggestions button p {
+  color: #d0d2eb;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.suggestion-arrow {
+  margin-top: auto;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  font-size: 19px;
+}
+
+@media (max-width: 700px) {
+ 
+/* TIMEVERSE AI — Discovery Cards */
+
+.ai-suggestions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  max-width: 1000px;
+  margin: 38px auto 30px;
+}
+
+.ai-suggestions > button {
+  width: 100%;
+  min-width: 0;
+  min-height: 205px;
+  padding: 24px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  gap: 13px !important;
+
+  text-align: left !important;
+  white-space: normal !important;
+
+  background: rgba(255, 255, 255, 0.09) !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+  border-radius: 20px !important;
+
+  color: #ffffff !important;
+  transition: all 0.25s ease;
+}
+
+.ai-suggestions > button:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(120, 155, 255, 0.55) !important;
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(35, 75, 180, 0.12);
+}
+
+.ai-suggestions .suggestion-label {
+  display: block;
+  color: #9eadd0;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  line-height: 1.4;
+}
+
+.ai-suggestions > button strong {
+  display: block;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.ai-suggestions > button p {
+  display: block;
+  color: #b5c2da;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.ai-suggestions .suggestion-arrow {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin-top: auto;
+
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+
+  color: white;
+  font-size: 19px;
+}
+
+/* Responsive layout */
+
+@media (max-width: 750px) {
+  .ai-suggestions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ai-suggestions {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .ai-suggestions > button {
+    min-height: 175px;
+  }
+}
+}
+}
+
+.ai-suggestions > button {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  text-align: left !important;
+  gap: 10px !important;
+}
+
+.ai-suggestions > button .suggestion-label {
+  display: block !important;
+  width: 100%;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  color: #91a9d2 !important;
+  line-height: 1.5 !important;
+}
+
+.ai-suggestions > button strong {
+  display: block !important;
+  width: 100%;
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  color: #f4f6ff !important;
+}
+
+.ai-suggestions > button p {
+  display: block !important;
+  width: 100%;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  line-height: 1.65 !important;
+  color: #aab8cf !important;
 }
