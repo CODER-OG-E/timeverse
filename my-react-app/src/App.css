@@ -190,14 +190,62 @@ footer {
    TIMEVERSE AI — HYBRID DESIGN
 ================================= */
 
+
+/* Full-screen TIMEVERSE AI background */
+
+
+/* TIMEVERSE Universe theme */
+
 .ai-page {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+
   background:
-    radial-gradient(ellipse at 50% 0%, #17264a 0%, transparent 50%),
+    radial-gradient(
+      ellipse at 50% 5%,
+      rgba(49, 91, 190, 0.24) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse at 85% 55%,
+      rgba(103, 76, 210, 0.10) 0%,
+      transparent 45%
+    ),
     #080b16;
-  color: #ffffff;
-  padding-bottom: 80px;
 }
+
+/* Match the homepage navbar */
+
+.ai-page .navbar {
+  background: rgba(8, 11, 22, 0.92);
+  border-bottom: 1px solid #20283b;
+}
+
+/* Keep the main content transparent */
+
+.ai-page .ai-container {
+  background: transparent !important;
+}
+
+/* TIMEVERSE discovery cards */
+
+.ai-suggestions > button {
+  background: rgba(17, 26, 44, 0.92) !important;
+  border: 1px solid #293b60 !important;
+}
+
+.ai-suggestions > button:hover {
+  background: #17243c !important;
+  border-color: #528cff !important;
+}
+
+
 
 .ai-page .navbar {
   background: rgba(8, 11, 22, 0.8);
@@ -563,4 +611,457 @@ footer {
   font-weight: 400 !important;
   line-height: 1.65 !important;
   color: #aab8cf !important;
+}
+
+
+/* Separate card labels, titles and descriptions */
+
+.ai-suggestions > button {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  text-align: left !important;
+  gap: 10px !important;
+}
+
+.ai-suggestions > button .suggestion-label {
+  display: block !important;
+  width: 100%;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.3px !important;
+  text-transform: none !important;
+  color: #91a9d2 !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+}
+
+.ai-suggestions > button strong {
+  display: block !important;
+  width: 100%;
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  color: #f4f6ff !important;
+  margin: 0 !important;
+}
+
+.ai-suggestions > button p {
+  display: block !important;
+  width: 100%;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  line-height: 1.65 !important;
+  color: #aab8cf !important;
+  margin: 0 !important;
+}
+
+/* TIMEVERSE AI — Full-page blue background */
+
+.ai-page {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(
+    180deg,
+    #172d59 0%,
+    #122447 35%,
+    #0e1b35 70%,
+    #0b1428 100%
+  ) !important;
+}
+
+.ai-page .ai-container {
+  background: transparent !important;
+}
+
+/* Make both card rows match the question box width */
+
+.ai-container {
+  width: 90% !important;
+  max-width: 1100px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.ai-suggestions {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  width: 100% !important;
+  max-width: none !important;
+  gap: 20px !important;
+  margin: 28px 0 !important;
+}
+
+.ai-suggestions > button {
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+/* Question box matches the cards */
+
+.ai-container textarea {
+  display: block;
+  width: 100% !important;
+  box-sizing: border-box;
+  margin: 28px 0 !important;
+}
+
+
+/* FINAL TIMEVERSE UNIVERSE BACKGROUND */
+
+.ai-page {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
+
+  background:
+    radial-gradient(
+      ellipse 55% 45% at 50% 12%,
+      rgba(55, 91, 190, 0.22),
+      transparent 100%
+    ),
+    radial-gradient(
+      ellipse 40% 55% at 85% 55%,
+      rgba(116, 72, 210, 0.10),
+      transparent 100%
+    ),
+    radial-gradient(
+      ellipse 45% 40% at 10% 75%,
+      rgba(35, 91, 170, 0.09),
+      transparent 100%
+    ),
+    #080b16 !important;
+}
+
+/* Keep the navbar dark */
+
+.ai-page .navbar {
+  background: #080b16 !important;
+  border-bottom: 1px solid #20283b;
+}
+
+/* Keep the content transparent */
+
+.ai-page .ai-container {
+  background: transparent !important;
+}
+
+
+/* =====================================
+   TIMEVERSE AI — COMPACT UNIVERSE DESIGN
+===================================== */
+
+/* Outer background */
+body {
+  background: #050812;
+  font-family: 'Inter', sans-serif;
+}
+
+#root {
+  width: 100%;
+  max-width: none;
+  border: none;
+  text-align: left;
+}
+
+/* Main rounded application panel */
+.ai-page {
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+
+/* Compact header */
+.ai-page .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 8px;
+  background: transparent;
+  border-bottom: 1px solid #293650;
+}
+
+.ai-page .navbar h1 {
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+  font-weight: 700;
+  color: #f4f6ff;
+}
+
+.ai-page .navbar h1 span {
+  color: #528cff;
+}
+
+.ai-page .navbar button {
+  padding: 7px 12px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #b7c5dc;
+  background: #111a2c;
+  border: 1px solid #293b60;
+  border-radius: 20px;
+}
+
+/* Small AI Explorer badge */
+.ai-page .navbar::after {
+  content: "AI Explorer";
+  order: 2;
+  margin-left: 12px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: rgba(45, 120, 246, 0.13);
+  color: #65a5ff;
+  font-size: 11px;
+}
+
+/* Main content */
+.ai-container {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+  padding: 28px 24px 4px;
+  text-align: center;
+  background: transparent;
+}
+
+/* Heading */
+.ai-container .tagline {
+  margin-bottom: 10px;
+  color: #65a5ff;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+}
+
+.ai-container h2 {
+  margin-bottom: 8px;
+  font-size: clamp(27px, 5vw, 38px);
+  font-weight: 600;
+  letter-spacing: -1.2px;
+  color: #f4f6ff;
+}
+
+.ai-container h2 span {
+  background: linear-gradient(90deg, #528cff, #a78bfa);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.ai-container > p:not(.tagline) {
+  margin-bottom: 22px;
+  color: #aab8cf;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Three equal cards per row */
+.ai-suggestions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+  max-width: none;
+  margin: 14px 0;
+}
+
+.ai-suggestions > button {
+  width: 100%;
+  min-width: 0;
+  min-height: 115px;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 7px;
+  text-align: left;
+  white-space: normal;
+
+  background: #111c30;
+  border: 1px solid #293b60;
+  border-radius: 13px;
+  color: #f4f6ff;
+  transition: 0.2s ease;
+}
+
+.ai-suggestions > button:hover {
+  background: #192945;
+  border-color: #528cff;
+  transform: translateY(-2px);
+}
+
+/* Card category label */
+.suggestion-label {
+  color: #75aaff;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  text-transform: none;
+}
+
+/* Card heading */
+.ai-suggestions > button strong {
+  display: block;
+  width: 100%;
+  margin: 0;
+  color: #f4f6ff;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+/* Card description */
+.ai-suggestions > button p {
+  margin: 0;
+  color: #aab8cf;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* Arrow */
+.suggestion-arrow {
+  margin-top: auto;
+  color: #75aaff;
+  font-size: 16px;
+}
+
+/* Question box */
+.ai-container textarea {
+  display: block;
+  width: 100%;
+  min-height: 95px;
+  margin: 10px 0;
+  padding: 14px;
+  box-sizing: border-box;
+  resize: vertical;
+
+  background: #111c30;
+  border: 1px solid #293b60;
+  border-radius: 13px;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+  outline: none;
+}
+
+.ai-container textarea::placeholder {
+  color: #91a3c0;
+}
+
+.ai-container textarea:focus {
+  border-color: #528cff;
+  box-shadow: 0 0 15px rgba(82, 140, 255, 0.12);
+}
+
+/* Full-width Ask button */
+.ai-submit-button {
+  display: block;
+  width: 100%;
+  margin: 12px 0 0;
+  padding: 13px 18px;
+
+  background: linear-gradient(100deg, #3978f6, #7655e8);
+  border: none;
+  border-radius: 11px;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ai-submit-button:hover {
+  background: linear-gradient(100deg, #528cff, #896bfa);
+}
+
+.ai-submit-button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* AI response */
+.ai-answer {
+  margin-top: 20px;
+  padding: 18px;
+  background: #111c30;
+  border: 1px solid #293b60;
+  border-radius: 13px;
+  text-align: left;
+}
+
+.ai-answer h3 {
+  margin-bottom: 12px;
+  color: #75aaff;
+  font-size: 15px;
+}
+
+.ai-answer p {
+  color: #d4deef;
+  font-size: 13px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* Mobile */
+@media (max-width: 520px) {
+  .ai-page {
+    width: calc(100% - 12px);
+    margin: 6px auto;
+    padding: 0 10px 12px;
+  }
+
+  .ai-suggestions {
+    gap: 7px;
+  }
+
+  .ai-suggestions > button {
+    padding: 9px 7px;
+    min-height: 120px;
+  }
+
+  .ai-suggestions > button strong {
+    font-size: 11px;
+  }
+
+  .ai-suggestions > button p {
+    font-size: 10px;
+  }
+}
+}
+
+/* FINAL WIDTH FIX — TIMEVERSE AI */
+
+.ai-page .ai-container {
+  width: 94vw !important;
+  max-width: none !important;
+  margin-left: calc((100% - 94vw) / 2) !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.ai-page .ai-suggestions {
+  width: 100% !important;
+  max-width: none !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.ai-page .ai-container textarea {
+  width: 100% !important;
+}
+
+.ai-page .ai-container > .ai-submit-button {
+  display: block;
+  width: 280px !important;
+  max-width: 100%;
+  margin: 20px auto 0 !important;
 }

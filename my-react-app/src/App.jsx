@@ -67,7 +67,7 @@ if (location.pathname === "/ai") {
 
         <div className="ai-suggestions">
 
-          <button onClick={() => setQuestion("Explain the evolution of video games and GTA VI.")}>
+         <button onClick={() => setQuestion("Explain the evolution of video games and GTA VI.")}>
   <span className="suggestion-label">Gaming</span>
   <strong>Gaming History</strong>
   <p>Explore games, consoles and gaming milestones.</p>
