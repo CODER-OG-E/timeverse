@@ -1,4 +1,5 @@
 
+import AnimationSettings from "./AnimationSettings.jsx";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Calendar from "./pages/Calendar";
@@ -39,17 +40,36 @@ const [aiLoading, setAiLoading] = useState(false);
 const [aiError, setAiError] = useState("");
 
 
+if (location.pathname === "/calendar") {
+  return <Calendar />;
+}
+
 if (location.pathname === "/ai") {
   return (
-    <main className="ai-page">
-      <nav className="navbar">
-        <h1>
-          TIME<span>VERSE</span>
-        </h1>
-        <button onClick={() => navigate("/")}>
-          ← Back to Home
-        </button>
-      </nav>
+    <main key={location.pathname} className="ai-page">
+     <nav className="navbar">
+  <h1>
+    TIME<span>VERSE</span>
+  </h1>
+
+
+<div className="page-nav-links">
+  <button onClick={() => navigate("/")}>
+    Home
+  </button>
+
+  <button className="active-page" onClick={() => navigate("/ai")}>
+    TIMEVERSE AI
+  </button>
+
+  <button onClick={() => navigate("/calendar")}>
+    Calendar Explorer
+  </button>
+</div>
+
+<AnimationSettings />
+</nav>
+
 
       <section className="ai-container">
         <p className="tagline">YOUR HISTORICAL DISCOVERY ASSISTANT</p>
@@ -149,17 +169,7 @@ if (location.pathname === "/ai") {
   );
 }
 
-  <button
-  className="ai-submit-button"
-  onClick={askAI}
-  disabled={aiLoading}
->
-  {aiLoading ? "Thinking..." : "Ask TIMEVERSE AI →"}
-</button>
-
-
-
-  function explore() {
+   function explore() {
     if (!search.trim()) {
       alert("Please enter something to explore!");
       return;
@@ -206,15 +216,24 @@ if (location.pathname === "/ai") {
   }
 
   return (
-    <main>
+    <main key={location.pathname}>
       <nav className="navbar">
         <h1>TIME<span>VERSE</span></h1>
-        <div>
-  <button onClick={() => navigate("/ai")}>
-    TIMEVERSE AI ↗
+        
+<div className="page-nav-links">
+  <button className="active-page" onClick={() => navigate("/")}>
+    Home
   </button>
-  <a href="/calendar">Calendar Explorer ↗</a>
+
+  <button onClick={() => navigate("/ai")}>
+    TIMEVERSE AI
+  </button>
+
+  <button onClick={() => navigate("/calendar")}>
+    Calendar Explorer
+  </button>
 </div>
+<AnimationSettings />
       </nav>
 
       <section className="hero">

@@ -5,11 +5,14 @@ import { BrowserRouter } from "react-router-dom";
 
 import App from "./App.jsx";
 import "./index.css";
+import { AnimationProvider } from "./AnimationContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+      <AnimationProvider>
+        <App />
+      </AnimationProvider>
     </BrowserRouter>
   </StrictMode>
 );

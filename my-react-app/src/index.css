@@ -118,3 +118,61 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+/* =================================
+   TIMEVERSE PAGE TRANSITIONS
+================================= */
+
+/* =================================
+   TIMEVERSE PAGE TRANSITIONS
+================================= */
+
+@keyframes timeverse-short {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes timeverse-long {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(35px);
+    filter: blur(12px);
+  }
+
+  60% {
+    opacity: 0.7;
+    filter: blur(4px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+html[data-animation="short"] main {
+  animation: timeverse-short 350ms ease-out both !important;
+}
+
+html[data-animation="long"] main {
+  animation: timeverse-long 2000ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
+}
+
+html[data-animation="off"] main {
+  animation: none !important;
+  filter: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html main {
+    animation: none !important;
+    filter: none !important;
+  }
+}

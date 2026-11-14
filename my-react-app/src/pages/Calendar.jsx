@@ -1,6 +1,7 @@
 
+import AnimationSettings from "../AnimationSettings.jsx";
 import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
 import "./Calendar.css";
 
 const months = [
@@ -33,6 +34,8 @@ function getDaysInMonth(month, year) {
 }
 
 function Calendar() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [day, setDay] = useState(20);
   const [month, setMonth] = useState(7);
   const [year, setYear] = useState(1969);
@@ -141,20 +144,34 @@ async function travelThroughTime() {
   }
 
   return (
-    <main className="calendar-page">
+    <main key={location.pathname} className="calendar-page">
 
       {/* NAVIGATION */}
 
       <nav className="calendar-nav">
-        <a href="/" className="calendar-logo">
-          TIME<span>VERSE</span>
-        </a>
+  <a href="/" className="calendar-logo">
+    TIME<span>VERSE</span>
+  </a>
 
-        <div className="calendar-nav-links">
-          <a href="/">Home</a>
-          <span className="active-link">Calendar Explorer</span>
-        </div>
-      </nav>
+  <div className="calendar-nav-links">
+  <button onClick={() => navigate("/")}>
+    Home
+  </button>
+
+  <button onClick={() => navigate("/ai")}>
+    TIMEVERSE AI
+  </button>
+
+  <button
+    className="active-page"
+    onClick={() => navigate("/calendar")}
+  >
+    Calendar Explorer
+  </button>
+</div>
+
+<AnimationSettings />
+</nav>
 
       {/* HERO */}
 

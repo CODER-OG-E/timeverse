@@ -1065,3 +1065,128 @@ body {
   max-width: 100%;
   margin: 20px auto 0 !important;
 }
+
+/* TIMEVERSE navbar button layout */
+
+.navbar > div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.navbar > div button {
+  white-space: nowrap;
+}
+
+@media (max-width: 520px) {
+  .navbar > div {
+    gap: 8px;
+  }
+
+  .navbar > div button {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+}
+
+/* TIMEVERSE shared page navigation */
+
+
+/* =========================================
+   TIMEVERSE — SHARED NAVIGATION SYSTEM
+========================================= */
+
+.page-nav-links,
+.calendar-nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* All inactive navigation buttons */
+
+.page-nav-links button,
+.calendar-page .calendar-nav-links button {
+  background: #111a2c !important;
+  border: 1px solid #293650 !important;
+  color: #8293b3 !important;
+  opacity: 0.85;
+  border-radius: 12px;
+  padding: 14px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Active page */
+
+.page-nav-links button.active-page,
+.calendar-page .calendar-nav-links button.active-page {
+  background: #3978f6 !important;
+  border-color: #3978f6 !important;
+  color: #ffffff !important;
+  opacity: 1;
+}
+
+/* Inactive hover */
+
+.page-nav-links button:hover,
+.calendar-page .calendar-nav-links button:hover {
+  background: #1b2b4b !important;
+  border-color: #528cff !important;
+  color: #ffffff !important;
+  opacity: 1;
+}
+
+/* Active button hover */
+
+.page-nav-links button.active-page:hover,
+.calendar-page .calendar-nav-links button.active-page:hover {
+  background: #528cff !important;
+  border-color: #528cff !important;
+}
+
+/* Mobile navigation */
+
+@media (max-width: 600px) {
+  .page-nav-links,
+  .calendar-page .calendar-nav-links {
+    gap: 7px;
+  }
+
+  .page-nav-links button,
+  .calendar-page .calendar-nav-links button {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+}
+
+
+/* TIMEVERSE animation preferences */
+
+.animation-settings {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #aab8cf;
+  font-size: 12px;
+}
+
+.animation-settings select {
+  background: #111a2c;
+  color: #ffffff;
+  border: 1px solid #293b60;
+  border-radius: 9px;
+  padding: 9px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.animation-settings select:focus {
+  outline: 2px solid #528cff;
+  outline-offset: 2px;
+}
